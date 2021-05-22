@@ -28,7 +28,13 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+  gem 'vcr'
 end
+
+gem 'factory_bot_rails'
+gem 'faker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
