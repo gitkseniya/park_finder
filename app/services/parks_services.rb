@@ -1,17 +1,18 @@
 class ParksServices
 
   def self.get_details(state)
-    api_key = ENV['api_key']
+    conn = Faraday.new(url: "https://developer.nps.gov", params: {
+      "stateCode": state,
+      "api_key": ENV['api_key']
+      })
 
-    conn = Faraday.new(url: "https://developer.nps.gov")
-
-    response = conn.get("/api/v1/parks?stateCode=#{state}&api_key=#{api_key}")
+    response = conn.get("/api/v1/parks")
 
     json = JSON.parse(response.body, symbolize_names: true)
 
-    json[:data]
+    json[:data].map do |park_data|
+      Park.new(park_data)
+    end
   end
-
-
 
 end
