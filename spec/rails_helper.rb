@@ -61,6 +61,13 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include FactoryBot::Syntax::Methods
 
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.filter_sensitive_data('<api_key>') { ENV['api_key'] }
+    config.default_cassette_options = { re_record_interval: 7.days }
+    config.configure_rspec_metadata!
+  end
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:

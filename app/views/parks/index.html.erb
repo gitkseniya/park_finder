@@ -1,3 +1,16 @@
+Total of parks found: <%= @parks.count %><br><br>
+
 <% @parks.each do |park| %>
-<%= park[:fullName] %>
+<h1><%= park[:fullName] %></h1><br>
+<b>Description </b><%= park[:description] %><br>
+<b>Directions </b><%= park[:directionsInfo] %><br><br>
+<b>Hrs </b>
+
+<%park[:operatingHours].map do |h|%>
+  <% h[:standardHours].map do |k, v| %>
+  <%= "#{k}, #{v}"%><br>
+  <%end %>
+  <%end %>
+
+<br><br>
 <% end %>

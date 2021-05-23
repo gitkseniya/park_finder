@@ -1,6 +1,5 @@
 require 'rails_helper'
-# require 'json'
-# require 'faraday'
+require 'vcr'
 
 RSpec.describe 'welcome index page' do
   describe 'happy path' do
