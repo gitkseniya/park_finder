@@ -1,6 +1,6 @@
 class ParksController < ApplicationController
   def index
-    @parks = ParksServices.get_details(params[:state])
+    @parks = ParkFacade.specific_park(params[:state])
   end
 
   def show

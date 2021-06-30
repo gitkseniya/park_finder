@@ -8,6 +8,16 @@ class Park
     @full_name = park_data[:fullName]
     @description = park_data[:description]
     @directions_info = park_data[:directionsInfo]
-    @operating_hours = park_data[:operatingHours]
+    @ohours = park_data[:operatingHours]
   end
+
+    def operating_hours
+      @ohours.map do |h|
+           h[:standardHours].map do |day, hours|
+              "#{day.capitalize}, #{hours}"
+            end
+          end.flatten
+        end
+
+
 end

@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'vcr'
+# require 'vcr'
 
 RSpec.describe 'welcome index page' do
   describe 'happy path' do
